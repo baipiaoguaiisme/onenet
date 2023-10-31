@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>live</title>
+    <script src="../static/ezuikit.js"></script>
+</head>
+<body>
+<div id="myplayer"></div>
+<div id="t" t="{{'f'+token+'e'}}"></div>
+<div id="a" a="{{'f'+address+'e'}}"></div>
+{%if message%}
+<p style="color: red">设备不在线</p>
+
+
+{%else%}
+<script>
+    var t = document.getElementById('t').getAttribute('t');
+    var token = "";
+    for (i = 1; i < t.length - 1; i++) {
+        token += t[i];
+    }
+
+    var a = document.getElementById('a').getAttribute('a');
+    var address = "";
+    for (i = 1; i < a.length - 1; i++) {
+        address += a[i];
+    }
+
+    var player = new EZUIKit.EZUIKitPlayer({
+        id: 'myplayer', // 视频容器ID
+        accessToken: token,
+        url: address,
+        width: 600,
+        height: 400,
+    });
+</script>
+{%endif%}
+</body>
+
+</html>
